@@ -1,0 +1,210 @@
+<odoo>
+  <data>
+    <record id="first_trip" model="tfs_trip_manager.trip">
+      <field name="color">1</field>
+      <field name="image" type="base64" file="tfs_trip_manager/static/example/maldivas.jpg"/>
+      <field name="start_date">2024-02-20-</field>
+      <field name="end_date">2024-02-25</field>
+      <field name="destination">Maldivas Islands</field>
+      <field name="motive">Business related trip, to get an important customer</field>
+      <field name="state">4</field>
+    </record>
+
+    <record id="second_trip" model="tfs_trip_manager.trip">
+      <field name="color">2</field>
+      <field name="image" type="base64" file="tfs_trip_manager/static/example/hawaii.jpeg"/>
+      <field name="start_date">2024-03-14</field>
+      <field name="end_date">2024-03-19</field>
+      <field name="destination">Hawaii Islands</field>
+      <field name="motive">Business to attend</field>
+      <field name="state">3</field>
+    </record>
+
+    <record id="third_trip" model="tfs_trip_manager.trip">
+      <field name="color">3</field>
+      <field name="image" type="base64" file="tfs_trip_manager/static/example/madrid.jpg"/>
+      <field name="start_date">2024-03-02</field>
+      <field name="end_date">2024-03-06</field>
+      <field name="destination">Madrid, Spain</field>
+      <field name="motive">Client meeting</field>
+      <field name="state">2</field>
+    </record>
+
+    <record id="fourth_trip" model="tfs_trip_manager.trip">
+      <field name="color">4</field>
+      <field name="image" type="base64" file="tfs_trip_manager/static/example/copenhagen.jpeg"/>
+      <field name="start_date">2024-03-09</field>
+      <field name="end_date">2024-03-11</field>
+      <field name="destination">Copenhagen, Denmark</field>
+      <field name="motive">Training</field>
+      <field name="state">1</field>
+    </record>
+
+    <record id="fifth_trip" model="tfs_trip_manager.trip">
+      <field name="color">5</field>
+      <field name="image" type="base64" file="tfs_trip_manager/static/example/ibiza.jpg"/>
+      <field name="start_date">2024-07-14</field>
+      <field name="end_date">2024-08-15</field>
+      <field name="destination">Ibiza</field>
+      <field name="motive">Partying</field>
+      <field name="state">0</field>
+    </record>
+
+    <record id="food" model="tfs_trip_manager.trip_expense">
+      <field name="name">Comida</field>
+      <field name="description">Un filete de ternera con arroz</field>
+      <field name="amount">50.00</field>
+      <field name="date">2024-02-20</field>
+      <field name="trip_id" ref = "first_trip"/>
+    </record>
+
+    <record id="public_transport" model="tfs_trip_manager.trip_expense">
+      <field name="name">Transporte público</field>
+      <field name="description">Metro ligero</field>
+      <field name="amount">20.00</field>
+      <field name="date">2024-02-21</field>
+      <field name="trip_id" ref = "first_trip"/>
+    </record>
+
+    <record id="taxi" model="tfs_trip_manager.trip_expense">
+      <field name="name">Taxi</field>
+      <field name="description">Taxi al hotel</field>
+      <field name="amount">15.00</field>
+      <field name="date">2024-03-15</field>
+      <field name="trip_id" ref = "second_trip"/>
+    </record>
+
+    <record id="cena" model="tfs_trip_manager.trip_expense">
+      <field name="name">Cena</field>
+      <field name="description">Cena de negocios</field>
+      <field name="amount">100.00</field>
+      <field name="date">2024-03-17</field>
+      <field name="trip_id" ref = "second_trip"/>
+    </record>
+
+    <record id="souvenirs" model="tfs_trip_manager.trip_expense">
+      <field name="name">Souvenirs</field>
+      <field name="description">Souvenirs para la empresa</field>
+      <field name="amount">30.00</field>
+      <field name="date">2024-03-15</field>
+      <field name="trip_id" ref = "second_trip"/>
+    </record>
+
+    <record id="first_phase" model="tfs_trip_manager.trip_phase">
+      <field name="name">Planificación</field>
+      <field name="description">Los detalles del viaje se están planificando.</field>
+      <field name="state">0</field>
+      <field name="trip_id" ref = "first_trip"/>
+    </record>
+
+    <record id="second_phase" model="tfs_trip_manager.trip_phase">
+      <field name="name">Reserva de vuelos</field>
+      <field name="description">Reservas para los vuelos y alojamiento se están realizando.</field>
+      <field name="state">0</field>
+      <field name="trip_id" ref = "first_trip"/>
+    </record>
+
+    <record id="third_phase" model="tfs_trip_manager.trip_phase">
+      <field name="name">Preparación del vuelo</field>
+      <field name="description">Se está preparando un itinerario detallado.</field>
+      <field name="state">0</field>
+      <field name="trip_id" ref = "second_trip"/>
+    </record>
+
+    <record id="fourth_phase" model="tfs_trip_manager.trip_phase">
+      <field name="name">Viaje en sí mismo</field>
+      <field name="description">Los empleados están realizando el viaje.</field>
+      <field name="state">1</field>
+      <field name="trip_id" ref = "first_trip"/>
+    </record>
+
+    <record id="fifth_phase" model="tfs_trip_manager.trip_phase">
+      <field name="name">Informe posterior</field>
+      <field name="description">Se prepara un informe detallado después del viaje.</field>
+      <field name="state">0</field>
+      <field name="trip_id" ref = "first_trip"/>
+    </record>
+
+    <record id="first_prog" model="tfs_trip_manager.trip_progress">
+      <field name="name">Planificación</field>
+      <field name="description">Se están definiendo las fechas y destinos del viaje.</field>
+      <field name="state">2</field>
+      <field name="trip_id" ref = "first_trip"/>
+    </record>
+
+    <record id="second_prog" model="tfs_trip_manager.trip_progress">
+      <field name="name">Reserva de Vuelos</field>
+      <field name="description">Se están reservando los vuelos para el viaje.</field>
+      <field name="state">2</field>
+      <field name="trip_id" ref = "first_trip"/>
+    </record>
+
+    <record id="third_prog" model="tfs_trip_manager.trip_progress">
+      <field name="name">Reserva de Alojamiento</field>
+      <field name="description">Se están reservando los alojamientos para el viaje.</field>
+      <field name="state">2</field>
+      <field name="trip_id" ref = "second_trip"/>
+    </record>
+
+    <record id="fourth_prog" model="tfs_trip_manager.trip_progress">
+      <field name="name">Preparación del Itinerario</field>
+      <field name="description">Se está preparando el itinerario detallado del viaje.</field>
+      <field name="state">1</field>
+      <field name="trip_id" ref = "first_trip"/>
+    </record>
+
+    <record id="fifth_prog" model="tfs_trip_manager.trip_progress">
+      <field name="name">Revisión de Gastos</field>
+      <field name="description">Se está revisando el informe de gastos del viaje.</field>
+      <field name="state">0</field>
+      <field name="trip_id" ref = "first_trip"/>
+    </record>
+
+    <record id="first_empl" model="hr.employee">
+      <field name="name">Juan José Pedraza</field>
+      <field name="work_phone">+34-654-854-778</field>
+      <field name="work_email">juanjo@gmail.com</field>
+      <field name="trips_ids" eval="[
+                Command.link(ref('tfs_trip_manager.first_trip')),
+                Command.link(ref('tfs_trip_manager.second_trip')),
+            ]" />
+    </record>
+
+    <record id="second_empl" model="hr.employee">
+      <field name="name">Felipe Montes</field>
+      <field name="work_phone">+34-654-874-152</field>
+      <field name="work_email">fmontes@gmail.com</field>
+      <field name="trips_ids" eval="[
+                Command.link(ref('tfs_trip_manager.second_trip')),
+            ]" />
+    </record>
+
+    <record id="third_empl" model="hr.employee">
+      <field name="name">Daniela Gómez</field>
+      <field name="work_phone">+34-655-987-695</field>
+      <field name="work_email">danigomez@gmail.com</field>
+      <field name="trips_ids" eval="[
+                Command.link(ref('tfs_trip_manager.first_trip')),
+                Command.link(ref('tfs_trip_manager.second_trip')),
+            ]" />
+    </record>
+
+    <record id="fourth_empl" model="hr.employee">
+      <field name="name">Maria del Pinar</field>
+      <field name="work_phone">+34-654-778-987</field>
+      <field name="work_email">maria@gmail.com</field>
+      <field name="trips_ids" eval="[
+                Command.link(ref('tfs_trip_manager.second_trip')),
+            ]" />
+    </record>
+
+    <record id="fifth_empl" model="hr.employee">
+      <field name="name">Marta Torres</field>
+      <field name="work_phone">+34-654-645-759</field>
+      <field name="work_email">mtorres@gmail.com</field>
+      <field name="trips_ids" eval="[
+                Command.link(ref('tfs_trip_manager.first_trip')),
+            ]" />
+    </record>
+  </data>
+</odoo>

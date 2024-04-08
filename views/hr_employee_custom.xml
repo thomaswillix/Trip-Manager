@@ -1,0 +1,44 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <!-- Heredamos la vista de formulario del modelo hr.employee -->
+
+        <record model="ir.ui.view" id="tfs_trip_manager.view_hr_employee_custom_form">
+            <field name="name">hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='address_id']" position="before">
+                    <field name="trips_ids">
+                        <tree>
+                            <field name="destination" />
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="state" widget="badge" decoration-success="state == '4'"
+                                decoration-warning="state == '1'"
+                                decoration-primary="state == '2'"
+                                decoration-info="state == '3'"
+              	                decoration-danger="state == '0'"/>
+                            <field name="employees_ids" string = "Trip buddies" widget="many2many_tags"
+                            options="{'color_field': 'color'}" />
+                        </tree>
+                    </field>
+                </xpath>
+            </field>
+        </record> 
+        
+        <!-- Heredamos la vista de formulario del modelo hr.employee -->
+        <record model="ir.ui.view" id="tfs_trip_manager.view_hr_employee_custom_tree">
+            <field name="name">hr.employee.tree.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='work_email']" position="after">
+                    <field name="trips_ids"/>
+                </xpath>
+            </field>
+        </record> 
+
+    </data>
+</odoo>    

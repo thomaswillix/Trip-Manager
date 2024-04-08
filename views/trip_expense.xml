@@ -1,0 +1,71 @@
+<odoo>
+  <data>
+
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="tfs_trip_manager.view_trip_expense_tree">
+      <field name="name">Trip expenses</field>
+      <field name="model">tfs_trip_manager.trip_expense</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="description"/>
+          <field name="amount"/>
+          <field name="date"/>
+          <field name="trip_id"/>
+        </tree>
+      </field>
+    </record>
+
+   <record model="ir.ui.view" id="tfs_trip_manager.view_trip_expense_form">
+      <field name="name">Trip expense</field>
+      <field name="model">tfs_trip_manager.trip_expense</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <tree>
+                <field name="name" placeholder="Tickets" style="font-size: min(4vw, 2.6rem);"/>
+                <field name="description" placeholder = "Airplane tickets"/>
+              </tree>
+              <group>
+                <img src='/tfs_trip_manager/static/image/dollar.png' alt = "Rerpresentative image of the expenses"/>
+              </group>
+              <group>
+                <field name="amount"  placeholder = "Amount"/>
+                <field name="date"/>
+                <field name="trip_id" placeholder = "Maldivas Enterprise Trip"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="tfs_trip_manager_trip_expense_view_search" model="ir.ui.view">
+      <field name="name">Search view</field>
+      <field name="model">tfs_trip_manager.trip_expense</field>
+      <field name="arch" type="xml">
+       <search>
+           <field name="name"/>
+           <field name="description"/>
+           <field name="amount"/>
+           <field name="date"/>
+           <field name="trip_id"/>
+        </search>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="tfs_trip_manager_trip_expenses_view_graph">
+      <field name="name">Expenses per Trip Graph</field>
+      <field name="model">tfs_trip_manager.trip_expense</field>
+      <field name="arch" type="xml">
+        <graph string="Expenses per Trip" type="bar">
+          <field name="trip_id"/>
+          <field name="amount" type="count" string="Número de Gastos"/>
+        </graph>
+      </field>
+    </record>
+  
+   </data>
+</odoo>

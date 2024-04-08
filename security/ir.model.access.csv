@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_tfs_trip_manager_trip_admin,tfs_trip_manager.trip,model_tfs_trip_manager_trip,base.group_system,1,1,1,1
+access_tfs_trip_manager_trip_phase_admin,tfs_trip_manager.trip_phase,model_tfs_trip_manager_trip_phase,base.group_system,1,1,1,1
+access_tfs_trip_manager_trip_expense_admin,tfs_trip_manager.trip_expense,model_tfs_trip_manager_trip_expense,base.group_system,1,1,1,1
+access_tfs_trip_manager_trip_progress_admin,tfs_trip_manager.trip_progress,model_tfs_trip_manager_trip_progress,base.group_system,1,1,1,1
+
+access_tfs_trip_manager_trip_user,tfs_trip_manager.trip,model_tfs_trip_manager_trip,base.group_user,1,1,0,0
+access_tfs_trip_manager_trip_phase_user,tfs_trip_manager.trip_phase,model_tfs_trip_manager_trip_phase,base.group_user,1,1,0,0
+access_tfs_trip_manager_trip_expense_user,tfs_trip_manager.trip_expense,model_tfs_trip_manager_trip_expense,base.group_user,1,1,0,0
+access_tfs_trip_manager_trip_progress_user,tfs_trip_manager.trip_progress,model_tfs_trip_manager_trip_progress,base.group_user,1,1,0,0

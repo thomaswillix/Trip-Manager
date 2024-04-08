@@ -1,0 +1,130 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+        <record model="ir.ui.view" id="tfs_trip_manager.view_trip_tree">
+            <field name="name">Trips</field>
+            <field name="model">tfs_trip_manager.trip</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="image" widget="image" options="{'size': [100, 100]}"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="destination"/>
+                    <field name="motive"/>
+                    <field name="state" widget="badge" decoration-success="state == '4'" decoration-warning="state == '1'" decoration-primary="state == '2'" decoration-info="state == '3'" decoration-danger="state == '0'"/>
+                    <field name="employees_ids"/>
+                    <field name="trip_phases_ids"/>
+                    <field name="trip_expenses_ids"/>
+                    <field name="trip_progress_ids"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="tfs_trip_manager.view_trip_form">
+            <field name="name">Trip</field>
+            <field name="model">tfs_trip_manager.trip</field>
+            <field name="arch" type="xml">
+                <form >
+                    <sheet>
+                        <group>
+                            <group class = "oe_title">
+                                <field name="destination" placeholder = "Destination" style="font-size: min(4vw, 2.6rem);" />
+                                <field name="motive" placeholder ="Motive" />
+                                <field name="start_date" />
+                                <field name="end_date"/>
+                            </group>
+                            <group >
+                                <field name="image" widget="image" options="{'size': [170, 170]}"/>
+                                <field name ="state"/>
+                                <field name="color"/>
+                            </group>
+                        </group>
+                        <tree>
+                            <field name="employees_ids">
+                                <tree>
+                                    <field name="name" />
+                                    <field name="work_phone"/>
+                                    <field name="work_email"/>
+                                    <field name="trips_ids" widget="many2many_tags" options="{'color_field': 'color'}" />
+                                </tree>
+                            </field>
+                            <field name="trip_phases_ids">
+                                <tree>
+                                    <field name="name" />
+                                    <field name="description"/>
+                                    <field name="state"  widget = "badge" decoration-success="state == '2'" decoration-warning="state == '0'" decoration-info="state == '1'"/>
+                                </tree>
+                            </field>
+                            <field name="trip_expenses_ids">
+                                <tree>
+                                    <field name="name" />
+                                    <field name="description"/>
+                                    <field name="amount"/>
+                                    <field name="date"/>
+                                </tree>
+                            </field>
+                            <field name="trip_progress_ids">
+                                <tree>
+                                    <field name="name" />
+                                    <field name="description"/>
+                                    <field name="state" widget = "badge" decoration-success="state == '2'" decoration-warning="state == '0'" decoration-info="state == '1'"/>
+                                </tree>
+                            </field>
+                        </tree>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="tfs_trip_manager.view_trip_kanban">
+            <field name="name">Trips</field>
+            <field name="model">tfs_trip_manager.trip</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click o_kanban_record_has_image_fill o_hr_kanban_record" >
+                                <field name="image" class="o_kanban_image_fill_left d-block" preview_image="image_128" widget="background_image" options="{'zoom': true, 'zoom_delay': 1000}" modifiers="{&quot;readonly&quot;: true}"/>
+
+                                <div class="oe_kanban_details">
+                                    <div class="o_kanban_record_top">
+                                        <div class="o_kanban_record_headings">
+                                            <strong class="o_kanban_record_title">
+                                                <t t-if="record.image.raw_value">
+                                                    <div class="float-end" t-if="record.image.raw_value == 'presence_present'" name="presence_present">
+                                                        <!-- Employee is present/connected and it is normal according to his work schedule  -->
+                                                        <span class="fa fa-circle text-success" role="img" aria-label="Present" title="Present" name="presence_present">
+                                                        </span>
+                                                    </div>
+                                                </t>
+                                            </strong>
+                                            <span t-if="record.destination.raw_value" class="o_kanban_record_subtitle"><field name="destination"/></span>
+                                        </div>                                        
+                                    </div>
+                                    <ul>
+                                        <li t-if="record.start_date.raw_value" class="o_text_overflow"><field name="start_date"/></li>
+                                        <li t-if="record.end_date.raw_value" class="o_force_ltr"><field name="end_date"/></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="tfs_trip_manager_trip_view_search" model="ir.ui.view">
+            <field name="name">Search view</field>
+            <field name="model">tfs_trip_manager.trip</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="destination"/>
+                    <field name="motive"/>
+                    <field name="state"/>
+                </search>
+            </field>
+        </record>
+    </data>
+</odoo>

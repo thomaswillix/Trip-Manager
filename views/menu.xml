@@ -1,0 +1,83 @@
+<odoo>
+    <data>
+        <!-- actions -->
+        <record id="tfs_trip_manager.trip_manager_trip_action" model="ir.actions.act_window">
+            <field name="name">Trips</field>
+            <field name="res_model">tfs_trip_manager.trip</field>
+            <field name="view_mode">tree,form,kanban,search</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help"></field>
+        </record>
+
+        <record id="tfs_trip_manager.trip_manager_trip_phase_action" model="ir.actions.act_window">
+            <field name="name">Trip phases</field>
+            <field name="res_model">tfs_trip_manager.trip_phase</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help"></field>
+        </record>
+
+        <record id="tfs_trip_manager.trip_manager_trip_progress_action" model="ir.actions.act_window">
+            <field name="name">Trip progress</field>
+            <field name="res_model">tfs_trip_manager.trip_progress</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help"></field>
+        </record>
+
+        <record id="tfs_trip_manager.trip_manager_hr_employee_custom_action" model="ir.actions.act_window">
+            <field name="name">Employees</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help"></field>
+        </record>
+
+        <record id="tfs_trip_manager.trip_manager_trip_expense_action" model="ir.actions.act_window">
+            <field name="name">Trip expenses</field>
+            <field name="res_model">tfs_trip_manager.trip_expense</field>
+            <field name="view_mode">tree,form,search,graph</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help"></field>
+        </record>
+
+        <!-- Top menu item -->
+        <menuitem name="Business trips" id="tfs_trip_manager.business_trips_menu" sequence = "1"/>
+
+        <!-- menu categories -->
+        <menuitem 
+            name="Trip" 
+            id="tfs_trip_manager.trip_menu" 
+            parent="tfs_trip_manager.business_trips_menu"
+            action="tfs_trip_manager.trip_manager_trip_action"/>
+        
+        <menuitem 
+            name="Employees" 
+            id="tfs_trip_manager.hr_employees_custom_menu" 
+            parent="tfs_trip_manager.business_trips_menu"
+            action="tfs_trip_manager.trip_manager_hr_employee_custom_action"/>
+
+        <menuitem 
+            name="Phases" 
+            id="tfs_trip_manager.trip_phase_menu" 
+            parent="tfs_trip_manager.trip_menu"
+            action="tfs_trip_manager.trip_manager_trip_phase_action"/>
+
+        <menuitem 
+            name="Progress" 
+            id="tfs_trip_manager.trip_progress_menu" 
+            parent="tfs_trip_manager.trip_menu"
+            action="tfs_trip_manager.trip_manager_trip_progress_action"/>
+
+        <menuitem 
+            name="Expenses" 
+            id="tfs_trip_manager.trip_expense_menu" 
+            parent="tfs_trip_manager.trip_menu"
+            action="tfs_trip_manager.trip_manager_trip_expense_action"/>
+    </data>
+</odoo>

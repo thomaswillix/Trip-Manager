@@ -1,0 +1,56 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+        <record model="ir.ui.view" id="tfs_trip_manager.view_trip_progress_tree">
+            <field name="name">Trip progress</field>
+            <field name="model">tfs_trip_manager.trip_progress</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="state" widget = "badge"  decoration-success="state == '2'"
+                                        decoration-warning="state == '0'"
+                                        decoration-info="state == '1'"/>
+                    <field name="trip_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="tfs_trip_manager.view_trip_progress_form">
+            <field name="name">Trip progress</field>
+            <field name="model">tfs_trip_manager.trip_progress</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <tree>
+                                <field name="name" placeholder = "Task to-do" style="font-size: min(4vw, 2.6rem);"/>
+                                <field name="description" placeholder = "Description"/>
+                            </tree>
+                            <group>
+                                <img src='/tfs_trip_manager/static/image/progress.png' alt = "Representative image of the progress" />
+                            </group>
+                        </group>
+                        <group>
+                            <field name="state"/> 
+                            <field name="trip_id" placeholder = "Maldivas Enterprise Trip"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="tfs_trip_manager_trip_progress_view_search" model="ir.ui.view">
+            <field name="name">Search view</field>
+            <field name="model">tfs_trip_manager.trip_progress</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="state"/>
+                    <field name="trip_id"/>
+                </search>   
+            </field>
+        </record>
+    </data>
+</odoo>    
